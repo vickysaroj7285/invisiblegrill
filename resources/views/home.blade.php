@@ -36,6 +36,7 @@
     <meta name="twitter:image" content="{{ asset('images/closeup.jpg') }}">
 
     {{-- Favicon --}}
+    <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
 
     {{-- Preconnect for performance --}}
@@ -114,14 +115,46 @@
 
     {{-- ============ HEADER / NAV ============ --}}
     <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#f4f3ef]/80 border-b border-black/10 no-print" role="banner">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
             {{-- Logo --}}
-            <a href="#" class="flex items-center gap-2 font-semibold tracking-tight" aria-label="InvisibleGrill home">
-                <span class="w-7 h-7 rounded-md bg-gradient-to-br from-[#6b7a85] to-[#2e3438] grid place-items-center text-white">
-                    <i data-lucide="shield" class="w-4 h-4"></i>
-                </span>
-                InvisibleGrill<span class="text-[#6b7a85]">.</span>
+            <a href="#" class="flex items-center shrink-0" aria-label="SK Bird Net & Service Surat home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 52"
+                     class="h-10 sm:h-12 w-auto max-w-[155px] sm:max-w-[245px]"
+                     aria-label="SK Bird Net & Service Surat" role="img">
+                    <title>SK Bird Net &amp; Service Surat</title>
+                    <defs>
+                        <clipPath id="logo-icon-clip">
+                            <rect x="0" y="3" width="46" height="46" rx="9"/>
+                        </clipPath>
+                    </defs>
+                    <!-- Icon bg -->
+                    <rect x="0" y="3" width="46" height="46" rx="9" fill="#2e3438"/>
+                    <!-- Net mesh inside icon -->
+                    <g clip-path="url(#logo-icon-clip)" stroke="#6b7a85" stroke-width="1" opacity="0.45" fill="none">
+                        <line x1="-3" y1="3"  x2="49" y2="49"/>
+                        <line x1="-3" y1="13" x2="49" y2="59"/>
+                        <line x1="-3" y1="-7" x2="49" y2="39"/>
+                        <line x1="7"  y1="-7" x2="59" y2="39"/>
+                        <line x1="49" y1="3"  x2="-3" y2="49"/>
+                        <line x1="49" y1="13" x2="-3" y2="59"/>
+                        <line x1="49" y1="-7" x2="-3" y2="39"/>
+                        <line x1="39" y1="-7" x2="-13" y2="39"/>
+                        <line x1="13" y1="-7" x2="65"  y2="39"/>
+                    </g>
+                    <!-- Flying bird -->
+                    <g transform="translate(23,26)" fill="white">
+                        <path d="M0,-3.5 C-4,-10 -13,-7 -16,-2 C-10,-5 -4.5,-3 0,2.5 C4.5,-3 10,-5 16,-2 C13,-7 4,-10 0,-3.5Z"/>
+                        <path d="M-2.5,2.5 L0,9.5 L2.5,2.5 Q0,5.5 -2.5,2.5Z" opacity="0.72"/>
+                    </g>
+                    <!-- Brand text -->
+                    <text x="58" y="22"
+                          font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif"
+                          font-size="20" font-weight="700" fill="#2e3438" letter-spacing="-0.3">SK Bird Net</text>
+                    <text x="59" y="41"
+                          font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif"
+                          font-size="13" font-weight="500" fill="#6b7a85" letter-spacing="0.4">&amp; Service · Surat</text>
+                </svg>
             </a>
 
             {{-- Desktop nav --}}
@@ -129,6 +162,7 @@
                 <a href="#features" class="hover:text-[#1c1c1a]">{{ __('site.navFeatures') }}</a>
                 <a href="#products" class="hover:text-[#1c1c1a]">{{ __('site.navProducts') }}</a>
                 <a href="#process" class="hover:text-[#1c1c1a]">{{ __('site.navProcess') }}</a>
+                <a href="#videos" class="hover:text-[#1c1c1a]">{{ __('site.navVideos') }}</a>
                 <a href="#contact" class="hover:text-[#1c1c1a]">{{ __('site.navContact') }}</a>
             </nav>
 
@@ -159,19 +193,38 @@
             </div>
         </div>
 
-        {{-- Mobile menu --}}
-        <nav id="mobile-menu"
-             class="mobile-menu md:hidden border-t border-black/10 bg-[#f4f3ef]/95 backdrop-blur-md"
-             aria-label="Mobile navigation">
-            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm">
-                <a href="#features" class="py-2 hover:text-[#1c1c1a]/70">{{ __('site.navFeatures') }}</a>
-                <a href="#products" class="py-2 hover:text-[#1c1c1a]/70">{{ __('site.navProducts') }}</a>
-                <a href="#process" class="py-2 hover:text-[#1c1c1a]/70">{{ __('site.navProcess') }}</a>
-                <a href="#contact" class="py-2 hover:text-[#1c1c1a]/70">{{ __('site.navContact') }}</a>
-                <a href="#contact" class="mt-2 rounded-full bg-[#2e3438] text-white font-medium px-4 py-2 inline-block text-center">{{ __('site.ctaQuote') }}</a>
-            </div>
-        </nav>
     </header>
+
+    {{-- Mobile menu backdrop --}}
+    <div id="menu-backdrop" class="menu-backdrop" aria-hidden="true"></div>
+
+    {{-- Mobile nav drawer (slides in from left) --}}
+    <nav id="mobile-menu"
+         class="mobile-drawer"
+         aria-label="Mobile navigation"
+         aria-hidden="true">
+
+        {{-- Drawer top bar --}}
+        <div class="flex items-center justify-between px-6 h-16 border-b border-black/10 shrink-0">
+            <span class="text-sm font-semibold text-[#1c1c1a] tracking-wide uppercase">Menu</span>
+            <button id="menu-close"
+                    type="button"
+                    class="p-2 -mr-2 text-[#1c1c1a] hover:text-[#1c1c1a]/60 transition"
+                    aria-label="{{ __('site.menuClose') }}">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        {{-- Nav links --}}
+        <div class="px-6 py-5 flex flex-col text-sm">
+            <a href="#features" class="py-3.5 border-b border-black/[0.07] text-[#1c1c1a]/70 hover:text-[#1c1c1a] transition">{{ __('site.navFeatures') }}</a>
+            <a href="#products" class="py-3.5 border-b border-black/[0.07] text-[#1c1c1a]/70 hover:text-[#1c1c1a] transition">{{ __('site.navProducts') }}</a>
+            <a href="#process"  class="py-3.5 border-b border-black/[0.07] text-[#1c1c1a]/70 hover:text-[#1c1c1a] transition">{{ __('site.navProcess') }}</a>
+            <a href="#videos"   class="py-3.5 border-b border-black/[0.07] text-[#1c1c1a]/70 hover:text-[#1c1c1a] transition">{{ __('site.navVideos') }}</a>
+            <a href="#contact"  class="py-3.5 text-[#1c1c1a]/70 hover:text-[#1c1c1a] transition">{{ __('site.navContact') }}</a>
+            <a href="#contact"  class="mt-5 rounded-full bg-[#2e3438] text-white font-medium px-4 py-2.5 text-center hover:bg-[#1c1c1a] transition">{{ __('site.ctaQuote') }}</a>
+        </div>
+    </nav>
 
     <main>
 
@@ -205,7 +258,7 @@
                             <span id="slide-kicker">{{ __('site.' . $slides[0]['kicker']) }}</span>
                         </span>
 
-                        <h1 id="slide-title" class="mt-6 text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
+                        <h1 id="slide-title" class="mt-6 text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
                             {{ __('site.' . $slides[0]['title']) }}
                         </h1>
 
@@ -293,44 +346,72 @@
 
         {{-- ============ PRODUCTS / SHOWCASE ============ --}}
         <section id="products" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="products-heading">
-            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <img src="{{ asset('images/closeup.jpg') }}"
-                         alt="Close-up of invisible grill stainless steel cables"
-                         loading="lazy"
-                         width="1024"
-                         height="1024"
-                         class="rounded-3xl w-full h-auto object-cover border border-[#1c1c1a]/10">
-                    <div class="absolute -bottom-6 -right-6 bg-[#2e3438] text-white rounded-2xl px-5 py-4 shadow-2xl">
-                        <div class="text-2xl font-semibold">2.5"</div>
-                        <div class="text-xs opacity-80">{{ __('site.cableSpacing') }}</div>
+            <div class="max-w-7xl mx-auto px-6">
+
+                {{-- Section header --}}
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                    <div>
+                        <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.rangeKicker') }}</div>
+                        <h2 id="products-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
+                            {{ __('site.rangeTitle') }}
+                        </h2>
                     </div>
+                    <p class="text-[#1c1c1a]/60 max-w-sm">{{ __('site.rangeDesc') }}</p>
                 </div>
 
-                <div>
-                    <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.rangeKicker') }}</div>
-                    <h2 id="products-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
-                        {{ __('site.rangeTitle') }}
-                    </h2>
-                    <p class="mt-4 text-[#1c1c1a]/70">{{ __('site.rangeDesc') }}</p>
+                {{-- Card slider --}}
+                <div class="prod-slider" role="region" aria-label="{{ __('site.rangeTitle') }}">
 
-                    <ul class="mt-8 space-y-4">
-                        @foreach ([
-                            ['rangeBalcony', 'rangeBalconyDesc'],
-                            ['rangeWindow',  'rangeWindowDesc'],
-                            ['rangeStair',   'rangeStairDesc'],
-                            ['rangeDuct',    'rangeDuctDesc'],
-                        ] as [$title, $desc])
-                            <li class="flex gap-4 border-b border-[#1c1c1a]/10 pb-4">
-                                <i data-lucide="check" class="w-5 h-5 text-[#6b7a85] mt-1 shrink-0"></i>
-                                <div>
-                                    <div class="font-medium">{{ __('site.' . $title) }}</div>
-                                    <div class="text-sm text-[#1c1c1a]/60">{{ __('site.' . $desc) }}</div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <button type="button"
+                            class="prod-nav-btn prod-prev"
+                            aria-label="{{ __('site.prodSliderPrev') }}"
+                            disabled>
+                        <i data-lucide="chevron-left" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="prod-track-outer">
+                        <div class="prod-track" id="prod-track">
+                            @foreach ($products as $prod)
+                                <article class="prod-card">
+                                    <div class="prod-card-img">
+                                        <img src="{{ asset('images/' . $prod['img']) }}"
+                                             alt="{{ __('site.' . $prod['title']) }}"
+                                             loading="lazy"
+                                             decoding="async"
+                                             width="600"
+                                             height="400"
+                                             class="prod-img">
+                                        <span class="prod-category">{{ __('site.' . $prod['cat']) }}</span>
+                                    </div>
+                                    <div class="prod-card-body">
+                                        <h3 class="prod-card-title">{{ __('site.' . $prod['title']) }}</h3>
+                                        <p class="prod-card-desc">{{ __('site.' . $prod['desc']) }}</p>
+                                        <div class="prod-tags">
+                                            @foreach ($prod['tags'] as $tag)
+                                                <span class="prod-tag">{{ __('site.' . $tag) }}</span>
+                                            @endforeach
+                                        </div>
+                                        <a href="#contact" class="prod-cta">
+                                            {{ __('site.ctaQuote') }}
+                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <button type="button"
+                            class="prod-nav-btn prod-next"
+                            aria-label="{{ __('site.prodSliderNext') }}">
+                        <i data-lucide="chevron-right" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
                 </div>
+
+                {{-- Slider dots --}}
+                <div class="prod-dots" id="prod-dots" role="tablist" aria-label="{{ __('site.rangeTitle') }}"></div>
+
             </div>
         </section>
 
@@ -356,6 +437,140 @@
                         </article>
                     @endforeach
                 </div>
+            </div>
+        </section>
+
+        {{-- ============ VIDEO GALLERY ============ --}}
+        <section id="videos" class="py-24 border-t border-[#1c1c1a]/10" aria-labelledby="videos-heading">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                    <div>
+                        <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.videoKicker') }}</div>
+                        <h2 id="videos-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
+                            {{ __('site.videoTitle') }}
+                        </h2>
+                    </div>
+                    <p class="text-[#1c1c1a]/60 max-w-sm">{{ __('site.videoDesc') }}</p>
+                </div>
+
+                {{-- Card slider --}}
+                <div class="vid-slider" role="region" aria-label="{{ __('site.videoTitle') }}">
+
+                    <button type="button"
+                            class="vid-nav-btn vid-prev"
+                            aria-label="{{ __('site.prodSliderPrev') }}"
+                            disabled>
+                        <i data-lucide="chevron-left" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="vid-track-outer">
+                        <div class="vid-track" id="vid-track">
+                            @foreach ($videos as $vid)
+                                <button type="button"
+                                        class="vid-card"
+                                        data-video-file="{{ asset('videos/' . $vid['video_file']) }}"
+                                        aria-label="{{ __('site.videoPlay') }}: {{ __('site.' . $vid['title']) }}">
+                                    <div class="vid-thumb-wrap">
+                                        <img src="{{ asset($vid['thumb']) }}"
+                                             alt="{{ __('site.' . $vid['title']) }}"
+                                             loading="lazy"
+                                             decoding="async"
+                                             width="600"
+                                             height="338"
+                                             class="vid-thumb">
+                                        <div class="vid-play" aria-hidden="true">
+                                            <div class="vid-play-btn">
+                                                <i data-lucide="play" class="w-5 h-5 text-[#2e3438]" style="margin-left:3px"></i>
+                                            </div>
+                                        </div>
+                                        <span class="vid-duration" aria-hidden="true">{{ $vid['duration'] }}</span>
+                                    </div>
+                                    <div class="vid-info">
+                                        <h3 class="vid-title">{{ __('site.' . $vid['title']) }}</h3>
+                                        <p class="vid-desc">{{ __('site.' . $vid['desc']) }}</p>
+                                    </div>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <button type="button"
+                            class="vid-nav-btn vid-next"
+                            aria-label="{{ __('site.prodSliderNext') }}">
+                        <i data-lucide="chevron-right" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+
+                {{-- Slider dots --}}
+                <div class="vid-dots" id="vid-dots" role="tablist" aria-label="{{ __('site.videoTitle') }}"></div>
+
+            </div>
+        </section>
+
+        {{-- ============ REVIEWS ============ --}}
+        <section id="reviews" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="reviews-heading">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                    <div>
+                        <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.reviewsKicker') }}</div>
+                        <h2 id="reviews-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
+                            {{ __('site.reviewsTitle') }}
+                        </h2>
+                    </div>
+                    <p class="text-[#1c1c1a]/60 max-w-sm">{{ __('site.reviewsDesc') }}</p>
+                </div>
+
+                <div class="rev-slider" role="region" aria-label="{{ __('site.reviewsTitle') }}">
+
+                    <button type="button"
+                            class="rev-nav-btn rev-prev"
+                            aria-label="{{ __('site.prodSliderPrev') }}"
+                            disabled>
+                        <i data-lucide="chevron-left" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="rev-track-outer">
+                        <div class="rev-track" id="rev-track">
+                            @foreach ($reviews as $rev)
+                                <article class="rev-card">
+                                    <div class="rev-card-top">
+                                        <div class="rev-stars" aria-label="{{ $rev['stars'] }} out of 5 stars">
+                                            @for ($s = 0; $s < $rev['stars']; $s++)★@endfor
+                                        </div>
+                                        <span class="rev-quote" aria-hidden="true">"</span>
+                                    </div>
+                                    <p class="rev-text">{{ $rev['text'] }}</p>
+                                    <div class="rev-author">
+                                        <img src="{{ asset('images/' . $rev['img']) }}"
+                                             alt="{{ $rev['name'] }}"
+                                             width="44"
+                                             height="44"
+                                             loading="lazy"
+                                             decoding="async"
+                                             class="rev-avatar">
+                                        <div>
+                                            <div class="rev-name">{{ $rev['name'] }}</div>
+                                            <div class="rev-role">{{ $rev['role'] }}</div>
+                                        </div>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <button type="button"
+                            class="rev-nav-btn rev-next"
+                            aria-label="{{ __('site.prodSliderNext') }}">
+                        <i data-lucide="chevron-right" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                </div>
+
+                <div class="rev-dots" id="rev-dots" role="tablist" aria-label="{{ __('site.reviewsTitle') }}"></div>
+
             </div>
         </section>
 
@@ -458,6 +673,26 @@
         </section>
 
     </main>
+
+    {{-- ============ VIDEO MODAL ============ --}}
+    <div id="vid-modal"
+         class="vid-modal"
+         role="dialog"
+         aria-modal="true"
+         aria-label="{{ __('site.videoPlay') }}"
+         aria-hidden="true">
+        <div class="vid-modal-backdrop" aria-hidden="true"></div>
+        <div class="vid-modal-box">
+            <button type="button"
+                    class="vid-modal-close"
+                    aria-label="{{ __('site.videoClose') }}">
+                <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
+            <div class="vid-modal-player">
+                <div id="vid-player"></div>
+            </div>
+        </div>
+    </div>
 
     {{-- ============ FOOTER ============ --}}
     <footer class="border-t border-[#1c1c1a]/10 py-10 text-center text-sm text-[#1c1c1a]/50" role="contentinfo">

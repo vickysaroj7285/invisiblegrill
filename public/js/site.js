@@ -79,13 +79,29 @@
 
 
         /* ----------  MOBILE MENU  ---------- */
-        $('#menu-toggle').on('click', function () {
-            $('#mobile-menu').toggleClass('is-open');
-        });
+        function openMenu() {
+            $('#mobile-menu').addClass('is-open').attr('aria-hidden', 'false');
+            $('#menu-backdrop').addClass('is-open');
+            $('#menu-toggle').attr('aria-expanded', 'true');
+            $('body').css('overflow', 'hidden');
+        }
+        function closeMenu() {
+            $('#mobile-menu').removeClass('is-open').attr('aria-hidden', 'true');
+            $('#menu-backdrop').removeClass('is-open');
+            $('#menu-toggle').attr('aria-expanded', 'false');
+            $('body').css('overflow', '');
+        }
 
-        // close mobile menu when an anchor link inside it is clicked
-        $('#mobile-menu a').on('click', function () {
-            $('#mobile-menu').removeClass('is-open');
+        $('#menu-toggle').on('click', openMenu);
+        $('#menu-close').on('click', closeMenu);
+        $('#menu-backdrop').on('click', closeMenu);
+
+        // Close when a nav link inside drawer is clicked
+        $('#mobile-menu a').on('click', closeMenu);
+
+        // Close on Escape key
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') { closeMenu(); }
         });
 
 
@@ -138,6 +154,303 @@
                 $submit.prop('disabled', false).text(originalBtnText);
             });
         });
+
+
+        /* ----------  PRODUCT CARD SLIDER  ---------- */
+        (function () {
+            var $trackOuter = $('.prod-track-outer');
+            var $track      = $('#prod-track');
+            if (!$track.length) { return; }
+
+            var $cards    = $track.find('.prod-card');
+            var $dotsWrap = $('#prod-dots');
+            var $prev     = $('.prod-prev');
+            var $next     = $('.prod-next');
+            var total     = $cards.length;
+            var GAP       = 24;
+            var idx       = 0;
+
+            function perPage() {
+                if (window.innerWidth >= 1024) { return 3; }
+                if (window.innerWidth >= 640)  { return 2; }
+                return 1;
+            }
+
+            function cardWidth() {
+                var pp = perPage();
+                var ow = $trackOuter.width();
+                return Math.floor((ow - GAP * (pp - 1)) / pp);
+            }
+
+            function maxIdx() {
+                return Math.max(0, total - perPage());
+            }
+
+            function buildDots() {
+                $dotsWrap.empty();
+                var max = maxIdx();
+                for (var i = 0; i <= max; i++) {
+                    $('<button>')
+                        .attr({ type: 'button', 'data-i': i, 'aria-label': 'Product ' + (i + 1), role: 'tab' })
+                        .addClass('prod-dot' + (i === idx ? ' is-active' : ''))
+                        .appendTo($dotsWrap)
+                        .on('click', function () { goTo(+$(this).data('i')); });
+                }
+            }
+
+            function render() {
+                var cw     = cardWidth();
+                var offset = idx * (cw + GAP);
+                $cards.css('width', cw + 'px');
+                $track.css('transform', 'translateX(-' + offset + 'px)');
+                var max = maxIdx();
+                $prev.prop('disabled', idx === 0);
+                $next.prop('disabled', idx >= max);
+                $dotsWrap.find('.prod-dot').removeClass('is-active').eq(idx).addClass('is-active');
+            }
+
+            function goTo(n) {
+                idx = Math.max(0, Math.min(n, maxIdx()));
+                render();
+            }
+
+            $prev.on('click', function () { goTo(idx - 1); });
+            $next.on('click', function () { goTo(idx + 1); });
+
+            /* Touch / swipe */
+            var startX = 0;
+            $track[0].addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            $track[0].addEventListener('touchend', function (e) {
+                var dx = startX - e.changedTouches[0].clientX;
+                if (Math.abs(dx) > 40) { goTo(dx > 0 ? idx + 1 : idx - 1); }
+            }, { passive: true });
+
+            /* Resize: debounced */
+            var resizeTid;
+            $(window).on('resize.prodSlider', function () {
+                clearTimeout(resizeTid);
+                resizeTid = setTimeout(function () {
+                    idx = Math.min(idx, maxIdx());
+                    buildDots();
+                    render();
+                }, 150);
+            });
+
+            buildDots();
+            render();
+        }());
+
+
+        /* ----------  REVIEW CARD SLIDER  ---------- */
+        (function () {
+            var $trackOuter = $('.rev-track-outer');
+            var $track      = $('#rev-track');
+            if (!$track.length) { return; }
+
+            var $cards    = $track.find('.rev-card');
+            var $dotsWrap = $('#rev-dots');
+            var $prev     = $('.rev-prev');
+            var $next     = $('.rev-next');
+            var total     = $cards.length;
+            var GAP       = 24;
+            var idx       = 0;
+
+            function perPage() {
+                if (window.innerWidth >= 1024) { return 3; }
+                if (window.innerWidth >= 640)  { return 2; }
+                return 1;
+            }
+
+            function cardWidth() {
+                var pp = perPage();
+                var ow = $trackOuter.width();
+                return Math.floor((ow - GAP * (pp - 1)) / pp);
+            }
+
+            function maxIdx() { return Math.max(0, total - perPage()); }
+
+            function buildDots() {
+                $dotsWrap.empty();
+                var max = maxIdx();
+                for (var i = 0; i <= max; i++) {
+                    $('<button>')
+                        .attr({ type: 'button', 'data-i': i, 'aria-label': 'Review ' + (i + 1), role: 'tab' })
+                        .addClass('rev-dot' + (i === idx ? ' is-active' : ''))
+                        .appendTo($dotsWrap)
+                        .on('click', function () { goTo(+$(this).data('i')); });
+                }
+            }
+
+            function render() {
+                var cw     = cardWidth();
+                var offset = idx * (cw + GAP);
+                $cards.css('width', cw + 'px');
+                $track.css('transform', 'translateX(-' + offset + 'px)');
+                var max = maxIdx();
+                $prev.prop('disabled', idx === 0);
+                $next.prop('disabled', idx >= max);
+                $dotsWrap.find('.rev-dot').removeClass('is-active').eq(idx).addClass('is-active');
+            }
+
+            function goTo(n) {
+                idx = Math.max(0, Math.min(n, maxIdx()));
+                render();
+            }
+
+            $prev.on('click', function () { goTo(idx - 1); });
+            $next.on('click', function () { goTo(idx + 1); });
+
+            var startX = 0;
+            $track[0].addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            $track[0].addEventListener('touchend', function (e) {
+                var dx = startX - e.changedTouches[0].clientX;
+                if (Math.abs(dx) > 40) { goTo(dx > 0 ? idx + 1 : idx - 1); }
+            }, { passive: true });
+
+            var resizeTid;
+            $(window).on('resize.revSlider', function () {
+                clearTimeout(resizeTid);
+                resizeTid = setTimeout(function () {
+                    idx = Math.min(idx, maxIdx());
+                    buildDots();
+                    render();
+                }, 150);
+            });
+
+            buildDots();
+            render();
+        }());
+
+
+        /* ----------  VIDEO CARD SLIDER  ---------- */
+        (function () {
+            var $trackOuter = $('.vid-track-outer');
+            var $track      = $('#vid-track');
+            if (!$track.length) { return; }
+
+            var $cards    = $track.find('.vid-card');
+            var $dotsWrap = $('#vid-dots');
+            var $prev     = $('.vid-prev');
+            var $next     = $('.vid-next');
+            var total     = $cards.length;
+            var GAP       = 24;
+            var idx       = 0;
+
+            function perPage() {
+                if (window.innerWidth >= 1024) { return 3; }
+                if (window.innerWidth >= 640)  { return 2; }
+                return 1;
+            }
+
+            function cardWidth() {
+                var pp = perPage();
+                var ow = $trackOuter.width();
+                return Math.floor((ow - GAP * (pp - 1)) / pp);
+            }
+
+            function maxIdx() {
+                return Math.max(0, total - perPage());
+            }
+
+            function buildDots() {
+                $dotsWrap.empty();
+                var max = maxIdx();
+                for (var i = 0; i <= max; i++) {
+                    $('<button>')
+                        .attr({ type: 'button', 'data-i': i, 'aria-label': 'Video ' + (i + 1), role: 'tab' })
+                        .addClass('vid-dot' + (i === idx ? ' is-active' : ''))
+                        .appendTo($dotsWrap)
+                        .on('click', function () { goTo(+$(this).data('i')); });
+                }
+            }
+
+            function render() {
+                var cw     = cardWidth();
+                var offset = idx * (cw + GAP);
+                $cards.css('width', cw + 'px');
+                $track.css('transform', 'translateX(-' + offset + 'px)');
+                var max = maxIdx();
+                $prev.prop('disabled', idx === 0);
+                $next.prop('disabled', idx >= max);
+                $dotsWrap.find('.vid-dot').removeClass('is-active').eq(idx).addClass('is-active');
+            }
+
+            function goTo(n) {
+                idx = Math.max(0, Math.min(n, maxIdx()));
+                render();
+            }
+
+            $prev.on('click', function () { goTo(idx - 1); });
+            $next.on('click', function () { goTo(idx + 1); });
+
+            var startX = 0;
+            $track[0].addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            $track[0].addEventListener('touchend', function (e) {
+                var dx = startX - e.changedTouches[0].clientX;
+                if (Math.abs(dx) > 40) { goTo(dx > 0 ? idx + 1 : idx - 1); }
+            }, { passive: true });
+
+            var resizeTid;
+            $(window).on('resize.vidSlider', function () {
+                clearTimeout(resizeTid);
+                resizeTid = setTimeout(function () {
+                    idx = Math.min(idx, maxIdx());
+                    buildDots();
+                    render();
+                }, 150);
+            });
+
+            buildDots();
+            render();
+        }());
+
+
+        /* ----------  VIDEO GALLERY MODAL  ---------- */
+        (function () {
+            var $modal    = $('#vid-modal');
+            var $player   = $('#vid-player');
+            if (!$modal.length) { return; }
+
+            var $backdrop = $modal.find('.vid-modal-backdrop');
+            var $close    = $modal.find('.vid-modal-close');
+
+            function openVideo(videoFile) {
+                $player.html(
+                    '<video src="' + videoFile + '" ' +
+                    'controls autoplay playsinline preload="metadata" ' +
+                    'style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;">' +
+                    '</video>'
+                );
+                $modal.addClass('is-open').attr('aria-hidden', 'false');
+                $('body').css('overflow', 'hidden');
+                $close.focus();
+            }
+
+            function closeVideo() {
+                var $vid = $player.find('video');
+                if ($vid.length) { $vid[0].pause(); }
+                $modal.removeClass('is-open').attr('aria-hidden', 'true');
+                setTimeout(function () { $player.empty(); }, 300);
+                $('body').css('overflow', '');
+            }
+
+            $(document).on('click', '.vid-card', function () {
+                openVideo($(this).data('video-file'));
+            });
+
+            $backdrop.on('click', closeVideo);
+            $close.on('click', closeVideo);
+
+            $(document).on('keydown', function (e) {
+                if (e.key === 'Escape' && $modal.hasClass('is-open')) { closeVideo(); }
+            });
+        }());
 
 
         /* ----------  LUCIDE ICON RENDER  ---------- */

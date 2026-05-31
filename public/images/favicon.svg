@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="fav-clip">
+      <rect width="32" height="32" rx="6"/>
+    </clipPath>
+  </defs>
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#2e3438"/>
+  <!-- Net mesh -->
+  <g clip-path="url(#fav-clip)" stroke="#6b7a85" stroke-width="0.9" opacity="0.45" fill="none">
+    <line x1="-2" y1="-2"  x2="34" y2="34"/>
+    <line x1="-2" y1="8"   x2="34" y2="44"/>
+    <line x1="-2" y1="-12" x2="34" y2="24"/>
+    <line x1="8"  y1="-12" x2="44" y2="24"/>
+    <line x1="34" y1="-2"  x2="-2" y2="34"/>
+    <line x1="34" y1="8"   x2="-2" y2="44"/>
+    <line x1="34" y1="-12" x2="-2" y2="24"/>
+    <line x1="24" y1="-12" x2="-12" y2="24"/>
+  </g>
+  <!-- Bird -->
+  <g transform="translate(16,14)" fill="white">
+    <path d="M0,-3 C-3,-8 -9,-5 -12,-1 C-7.5,-4 -3,-2 0,2 C3,-2 7.5,-4 12,-1 C9,-5 3,-8 0,-3Z"/>
+    <path d="M-2,2 L0,7 L2,2 Q0,4.5 -2,2Z" opacity="0.72"/>
+  </g>
+  <!-- "SK" initials at bottom -->
+  <text x="16" y="30"
+        font-family="Arial,sans-serif"
+        font-size="8.5" font-weight="700" fill="#6b7a85"
+        text-anchor="middle" letter-spacing="1">SK</text>
+</svg>
