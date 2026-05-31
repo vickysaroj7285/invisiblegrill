@@ -21,13 +21,23 @@ return [
     // Hero slides
     'slide1Kicker' => 'Pigeon-proof. Period.',
     'slide1Title' => 'Safety that disappears into the view.',
-    'slide1Sub' => 'Stainless steel cables that keep pigeons out and your skyline in.',
+    'slide1Sub' => '',
     'slide2Kicker' => 'Built for high-rises',
     'slide2Title' => 'No more mess. No more noise.',
-    'slide2Sub' => 'Custom-fit invisible grills for every balcony, every floor.',
+    'slide2Sub' => '',
     'slide3Kicker' => 'Window protection',
     'slide3Title' => 'See the sky. Not the birds.',
-    'slide3Sub' => 'Ultra-thin 1.5mm cables — barely there, always there.',
+    'slide3Sub' => '',
+
+    // Hero service chips (from shop banner)
+    'heroSvc1'       => 'Bird Net',
+    'heroSvc2'       => 'Bird Spike',
+    'heroSvc3'       => 'Nylon Net',
+    'heroSvc4'       => 'Mosquito Net',
+    'heroSvc5'       => 'Green House',
+    'heroSvc6'       => 'Agro Shade Net',
+    'heroSvc7'       => 'Invisible Grill',
+    'heroSvcTagline' => 'Total All Netting Solutions Facility Available Here',
     'sliderAutoLabel' => 'Auto-rotating',
 
     // Stats

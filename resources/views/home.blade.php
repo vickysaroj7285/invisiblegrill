@@ -262,9 +262,14 @@
                             {{ __('site.' . $slides[0]['title']) }}
                         </h1>
 
-                        <p id="slide-sub" class="mt-6 text-lg text-[#1c1c1a]/70 max-w-xl">
-                            {{ __('site.' . $slides[0]['sub']) }}
-                        </p>
+                    </div>
+
+                    {{-- Fixed service chips — visible on all slides, not part of #slide-text --}}
+                    <div class="hero-services" aria-label="{{ __('site.heroSvcTagline') }}">
+                        @foreach (['heroSvc1','heroSvc2','heroSvc3','heroSvc4','heroSvc5','heroSvc6','heroSvc7'] as $svc)
+                            <span class="hero-svc-chip">{{ __('site.' . $svc) }}</span>
+                        @endforeach
+                        <p class="hero-svc-tagline">{{ __('site.heroSvcTagline') }}</p>
                     </div>
 
                     <div class="mt-8 flex flex-wrap gap-3">

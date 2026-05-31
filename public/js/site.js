@@ -14,7 +14,6 @@
         var $slideText = $('#slide-text');
         var $kicker    = $('#slide-kicker');
         var $title     = $('#slide-title');
-        var $sub       = $('#slide-sub');
         var total      = $slides.length;
         var active     = 0;
         var autoTimer  = null;
@@ -32,7 +31,6 @@
             var $current = $slides.eq(active);
             $kicker.text($current.attr('data-kicker') || '');
             $title.text($current.attr('data-title') || '');
-            $sub.text($current.attr('data-sub') || '');
 
             // Re-trigger fade animation
             $slideText.removeClass('animate-fade-in');
