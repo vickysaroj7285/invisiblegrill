@@ -200,6 +200,14 @@ return [
     // Footer
     'footerText' => 'InvisibleGrill. Crafted with safety in mind.',
 
+    // Location / Map
+    'locationKicker'       => 'Find Us',
+    'locationTitle'        => 'Visit our Surat showroom',
+    'locationDesc'         => 'Come see our full range of safety solutions in person. We\'re happy to help you choose the right product for your home.',
+    'locationOpenMaps'     => 'Open in Google Maps',
+    'locationMapTitle'     => 'SK Bird Net & Service — Surat location map',
+    'locationMapAriaLabel' => 'Open our Surat location in Google Maps',
+
     // ARIA / Accessibility
     'switchLang' => 'Switch language',
     'menuToggle' => 'Toggle menu',

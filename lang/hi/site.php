@@ -200,6 +200,14 @@ return [
     // Footer
     'footerText' => 'InvisibleGrill. सुरक्षा को ध्यान में रखकर बनाया गया।',
 
+    // Location / Map
+    'locationKicker'       => 'हमें खोजें',
+    'locationTitle'        => 'हमारे सूरत शोरूम पर आएं',
+    'locationDesc'         => 'हमारे सुरक्षा समाधान सीधे देखें। आपके घर के लिए सही उत्पाद चुनने में हम मदद करेंगे।',
+    'locationOpenMaps'     => 'Google Maps में खोलें',
+    'locationMapTitle'     => 'SK Bird Net & Service — सूरत स्थान मानचित्र',
+    'locationMapAriaLabel' => 'Google Maps में हमारा सूरत पता खोलें',
+
     // ARIA / Accessibility
     'switchLang' => 'भाषा बदलें',
     'menuToggle' => 'मेनू टॉगल करें',

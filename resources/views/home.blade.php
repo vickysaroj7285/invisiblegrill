@@ -579,6 +579,58 @@
             </div>
         </section>
 
+        {{-- ============ LOCATION / MAP ============ --}}
+        <section id="location" class="py-24 border-t border-[#1c1c1a]/10" aria-labelledby="location-heading">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.locationKicker') }}</div>
+                <h2 id="location-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">
+                    {{ __('site.locationTitle') }}
+                </h2>
+                <p class="mt-4 text-[#1c1c1a]/60 max-w-xl">{{ __('site.locationDesc') }}</p>
+
+                <div class="mt-10 relative rounded-2xl overflow-hidden border border-[#1c1c1a]/10 shadow-sm group">
+
+                    {{-- Transparent overlay: entire map area is clickable and opens Google Maps --}}
+                    <a href="https://www.google.com/maps/search/Plot+No.+31,+Sai+Palace,+Karadva-Dirdoli,+Surat+394210"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="absolute inset-0 z-10 flex items-end"
+                       aria-label="{{ __('site.locationMapAriaLabel') }}">
+
+                        {{-- Address bar shown at bottom of map --}}
+                        <div class="w-full bg-white/90 backdrop-blur-sm border-t border-[#1c1c1a]/10 px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group-hover:bg-white transition-colors">
+                            <div class="flex items-start sm:items-center gap-3 min-w-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-[#2e3438] shrink-0 mt-0.5 sm:mt-0"></i>
+                                <div class="min-w-0">
+                                    <div class="font-semibold text-sm text-[#1c1c1a]">SK Bird Net &amp; Service</div>
+                                    <div class="text-xs text-[#1c1c1a]/60 mt-0.5 truncate">Plot No. 31, Sai Palace, Karadva-Dirdoli, Surat&#8209;394210</div>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 text-xs font-medium text-[#2e3438] border border-[#1c1c1a]/15 rounded-full px-3 py-1.5 shrink-0 self-start sm:self-auto bg-[#f4f3ef] group-hover:border-[#2e3438]/40 transition-colors">
+                                <i data-lucide="external-link" class="w-3 h-3"></i>
+                                {{ __('site.locationOpenMaps') }}
+                            </span>
+                        </div>
+                    </a>
+
+                    {{-- Google Maps iframe — loads lazily (no API key needed for basic embed) --}}
+                    <iframe
+                        src="https://maps.google.com/maps?q=Plot+No.+31%2C+Sai+Palace%2C+Karadva-Dirdoli%2C+Surat+394210&output=embed&z=15"
+                        width="100%"
+                        height="420"
+                        loading="lazy"
+                        style="border:0; display:block; pointer-events:none;"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="{{ __('site.locationMapTitle') }}"
+                        aria-hidden="true">
+                    </iframe>
+
+                </div>
+            </div>
+        </section>
+
         {{-- ============ CONTACT ============ --}}
         <section id="contact" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="contact-heading">
             <div class="max-w-5xl mx-auto px-6">
