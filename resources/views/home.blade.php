@@ -65,8 +65,8 @@
         "@@id": "{{ url('/') }}#business",
         "name": "InvisibleGrill",
         "url": "{{ url('/') }}",
-        "telephone": "+91-98765-43210",
-        "email": "hello@invisiblegrill.in",
+        "telephone": "+91-70437-19519",
+        "email": "invisiblegrill25@gmail.com",
         "image": "{{ asset('images/closeup.jpg') }}",
         "logo": "{{ asset('images/closeup.jpg') }}",
         "description": "{{ __('site.metaDescription') }}",
@@ -97,7 +97,7 @@
 
     {{-- ============ FLOATING CONTACT BUTTONS ============ --}}
     <div class="fixed bottom-6 right-6 z-[60] flex flex-col gap-3 no-print" aria-label="Quick contact">
-        <a href="https://wa.me/919876543210"
+        <a href="https://wa.me/917043719519"
            target="_blank"
            rel="noopener noreferrer"
            class="float-btn w-12 h-12 rounded-full bg-[#25D366] text-white grid place-items-center shadow-lg"
@@ -105,7 +105,7 @@
            aria-label="WhatsApp">
             <i data-lucide="message-circle" class="w-5 h-5"></i>
         </a>
-        <a href="tel:+919876543210"
+        <a href="tel:+917043719519"
            class="float-btn w-12 h-12 rounded-full bg-[#2e3438] text-white grid place-items-center shadow-lg"
            title="{{ __('site.callNow') }}"
            aria-label="{{ __('site.callNow') }}">
@@ -643,12 +643,12 @@
 
                     {{-- Direct Call / WhatsApp --}}
                     <div class="mt-8 flex flex-wrap gap-3">
-                        <a href="tel:+919876543210"
+                        <a href="tel:+917043719519"
                            class="inline-flex items-center gap-2 rounded-full bg-[#2e3438] text-white font-medium px-5 py-2.5 hover:bg-[#1c1c1a] transition">
                             <i data-lucide="phone" class="w-4 h-4"></i>
                             {{ __('site.callNow') }}
                         </a>
-                        <a href="https://wa.me/919876543210"
+                        <a href="https://wa.me/917043719519"
                            target="_blank"
                            rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white font-medium px-5 py-2.5 hover:bg-[#128C7E] transition">
@@ -715,10 +715,10 @@
 
                     {{-- Contact info --}}
                     <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-[#1c1c1a]/70">
-                        <a href="tel:+919876543210" class="flex items-center gap-3 hover:text-[#1c1c1a]">
+                        <a href="tel:+917043719519" class="flex items-center gap-3 hover:text-[#1c1c1a]">
                             <i data-lucide="phone" class="w-4 h-4 text-[#6b7a85]"></i> {{ __('site.phone') }}
                         </a>
-                        <a href="mailto:hello@invisiblegrill.in" class="flex items-center gap-3 hover:text-[#1c1c1a]">
+                        <a href="mailto:invisiblegrill25@gmail.com" class="flex items-center gap-3 hover:text-[#1c1c1a]">
                             <i data-lucide="mail" class="w-4 h-4 text-[#6b7a85]"></i> {{ __('site.email') }}
                         </a>
                         <div class="flex items-center gap-3">

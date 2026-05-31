@@ -16,7 +16,7 @@ class HomeController extends Controller
 
         $products = [
             ['img' => 'slide1.jpg',  'cat' => 'prod1Cat', 'title' => 'prod1Title', 'desc' => 'prod1Desc', 'tags' => ['prod1Tag1', 'prod1Tag2', 'prod1Tag3']],
-            ['img' => 'closeup.jpg', 'cat' => 'prod2Cat', 'title' => 'prod2Title', 'desc' => 'prod2Desc', 'tags' => ['prod2Tag1', 'prod2Tag2', 'prod2Tag3']],
+            ['img' => 'spice.png',   'cat' => 'prod2Cat', 'title' => 'prod2Title', 'desc' => 'prod2Desc', 'tags' => ['prod2Tag1', 'prod2Tag2', 'prod2Tag3']],
             ['img' => 'slide2.jpg',  'cat' => 'prod3Cat', 'title' => 'prod3Title', 'desc' => 'prod3Desc', 'tags' => ['prod3Tag1', 'prod3Tag2', 'prod3Tag3']],
             ['img' => 'hero.jpg',    'cat' => 'prod4Cat', 'title' => 'prod4Title', 'desc' => 'prod4Desc', 'tags' => ['prod4Tag1', 'prod4Tag2', 'prod4Tag3']],
             ['img' => 'slide3.jpg',  'cat' => 'prod5Cat', 'title' => 'prod5Title', 'desc' => 'prod5Desc', 'tags' => ['prod5Tag1', 'prod5Tag2', 'prod5Tag3']],
