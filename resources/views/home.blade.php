@@ -318,7 +318,7 @@
         </section>
 
         {{-- ============ FEATURES ============ --}}
-        <section id="features" class="py-24" aria-labelledby="features-heading">
+        <section id="features" class="py-14 md:py-20" aria-labelledby="features-heading">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex items-end justify-between flex-wrap gap-6">
                     <div>
@@ -330,7 +330,7 @@
                     <p class="text-[#1c1c1a]/60 max-w-sm">{{ __('site.whyDesc') }}</p>
                 </div>
 
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ([
                         ['shield',   'featSafe',      'featSafeDesc'],
                         ['eye',      'featInvisible', 'featInvisibleDesc'],
@@ -350,11 +350,11 @@
         </section>
 
         {{-- ============ PRODUCTS / SHOWCASE ============ --}}
-        <section id="products" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="products-heading">
+        <section id="products" class="py-14 md:py-20 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="products-heading">
             <div class="max-w-7xl mx-auto px-6">
 
                 {{-- Section header --}}
-                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-8 md:mb-12">
                     <div>
                         <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.rangeKicker') }}</div>
                         <h2 id="products-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
@@ -421,14 +421,14 @@
         </section>
 
         {{-- ============ PROCESS ============ --}}
-        <section id="process" class="py-24 border-t border-[#1c1c1a]/10" aria-labelledby="process-heading">
+        <section id="process" class="py-14 md:py-20 border-t border-[#1c1c1a]/10" aria-labelledby="process-heading">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.processKicker') }}</div>
                 <h2 id="process-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight max-w-2xl">
                     {{ __('site.processTitle') }}
                 </h2>
 
-                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     @foreach ([
                         ['01', 'step1Title', 'step1Desc'],
                         ['02', 'step2Title', 'step2Desc'],
@@ -446,10 +446,10 @@
         </section>
 
         {{-- ============ VIDEO GALLERY ============ --}}
-        <section id="videos" class="py-24 border-t border-[#1c1c1a]/10" aria-labelledby="videos-heading">
+        <section id="videos" class="py-14 md:py-20 border-t border-[#1c1c1a]/10" aria-labelledby="videos-heading">
             <div class="max-w-7xl mx-auto px-6">
 
-                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-8 md:mb-12">
                     <div>
                         <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.videoKicker') }}</div>
                         <h2 id="videos-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
@@ -515,10 +515,10 @@
         </section>
 
         {{-- ============ REVIEWS ============ --}}
-        <section id="reviews" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="reviews-heading">
+        <section id="reviews" class="py-14 md:py-20 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="reviews-heading">
             <div class="max-w-7xl mx-auto px-6">
 
-                <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+                <div class="flex items-end justify-between flex-wrap gap-6 mb-8 md:mb-12">
                     <div>
                         <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.reviewsKicker') }}</div>
                         <h2 id="reviews-heading" class="mt-2 text-4xl md:text-5xl font-semibold tracking-tight">
@@ -580,7 +580,7 @@
         </section>
 
         {{-- ============ LOCATION / MAP ============ --}}
-        <section id="location" class="py-24 border-t border-[#1c1c1a]/10" aria-labelledby="location-heading">
+        <section id="location" class="py-14 md:py-20 border-t border-[#1c1c1a]/10" aria-labelledby="location-heading">
             <div class="max-w-7xl mx-auto px-6">
 
                 <div class="text-[#6b7a85] text-sm uppercase tracking-widest">{{ __('site.locationKicker') }}</div>
@@ -632,7 +632,7 @@
         </section>
 
         {{-- ============ CONTACT ============ --}}
-        <section id="contact" class="py-24 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="contact-heading">
+        <section id="contact" class="py-14 md:py-20 border-t border-[#1c1c1a]/10 bg-white/40" aria-labelledby="contact-heading">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="rounded-3xl border border-[#1c1c1a]/10 bg-gradient-to-br from-[#e7e5df] via-white to-[#dcdcd6] p-8 sm:p-10 md:p-16 shadow-sm">
 
