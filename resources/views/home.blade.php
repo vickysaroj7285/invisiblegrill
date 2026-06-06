@@ -24,7 +24,7 @@
     <meta property="og:title" content="{{ __('site.metaTitle') }}">
     <meta property="og:description" content="{{ __('site.metaDescription') }}">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('images/closeup.jpg') }}">
+    <meta property="og:image" content="{{ asset('images/orignleimage.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="{{ app()->getLocale() === 'hi' ? 'hi_IN' : 'en_IN' }}">
@@ -33,7 +33,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ __('site.metaTitle') }}">
     <meta name="twitter:description" content="{{ __('site.metaDescription') }}">
-    <meta name="twitter:image" content="{{ asset('images/closeup.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('images/orignleimage.png') }}">
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
@@ -67,8 +67,8 @@
         "url": "{{ url('/') }}",
         "telephone": "+91-70437-19519",
         "email": "invisiblegrill25@gmail.com",
-        "image": "{{ asset('images/closeup.jpg') }}",
-        "logo": "{{ asset('images/closeup.jpg') }}",
+        "image": "{{ asset('images/orignleimage.png') }}",
+        "logo": "{{ asset('images/orignleimage.png') }}",
         "description": "{{ __('site.metaDescription') }}",
         "priceRange": "₹₹",
         "areaServed": {
