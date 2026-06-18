@@ -10,7 +10,7 @@
     <title>{{ __('site.metaTitle') }}</title>
     <meta name="description" content="{{ __('site.metaDescription') }}">
     <meta name="keywords" content="{{ __('site.metaKeywords') }}">
-    <meta name="author" content="InvisibleGrill">
+    <meta name="author" content="SK Bird Net Surat">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta name="theme-color" content="#2e3438">
     <link rel="canonical" href="{{ url('/') }}">
@@ -20,7 +20,7 @@
 
     {{-- Open Graph --}}
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="InvisibleGrill">
+    <meta property="og:site_name" content="SK Bird Net Surat">
     <meta property="og:title" content="{{ __('site.metaTitle') }}">
     <meta property="og:description" content="{{ __('site.metaDescription') }}">
     <meta property="og:url" content="{{ url('/') }}">

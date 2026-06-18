@@ -2,9 +2,9 @@
 
 return [
     // SEO
-    'metaTitle' => 'InvisibleGrill — Invisible Safety Grills for Balconies & Windows',
-    'metaDescription' => 'Premium invisible grills for high-rise balconies, windows, staircases & duct areas. Aircraft-grade SS304/316 cables. Child & pet safe. 10-year warranty. Pan-India installation.',
-    'metaKeywords' => 'invisible grill, balcony safety, window grill, stainless steel cable grill, pigeon net, child safety grill, invisible grill India',
+    'metaTitle' => 'SK Bird Net Surat — Safety Grills & Bird Nets for Balconies & Windows',
+    'metaDescription' => 'Premium safety grills and bird nets for high-rise balconies, windows, staircases & duct areas in Surat. Aircraft-grade SS304/316 cables. Child & pet safe. 10-year warranty.',
+    'metaKeywords' => 'bird net surat, invisible grill surat, balcony safety net, window grill surat, SK bird net, pigeon net surat, child safety grill surat',
 
     // Nav
     'navFeatures' => 'Features',
