@@ -104,20 +104,34 @@
 
 
         /* ----------  CONTACT FORM (AJAX)  ---------- */
-        var $form     = $('#contact-form');
-        var $feedback = $('#form-feedback');
-        var $submit   = $('#contact-submit');
-        var originalBtnText = $submit.text();
+        var $form      = $('#contact-form');
+        var $feedback  = $('#form-feedback');
+        var $submit    = $('#contact-submit');
+        var $btnLabel  = $('#btn-label');
+        var $btnLoader = $('#btn-loader');
+        var $success   = $('#contact-success');
+        var origLabel  = $btnLabel.text().trim();
+
+        function showLoader() {
+            $submit.prop('disabled', true);
+            $btnLoader.show();
+            $btnLabel.text($submit.data('submitting') || 'Submitting…');
+        }
+        function hideLoader() {
+            $submit.prop('disabled', false);
+            $btnLoader.hide();
+            $btnLabel.text(origLabel);
+        }
 
         $form.on('submit', function (e) {
             e.preventDefault();
 
-            // Reset previous errors
+            // Reset
             $form.find('.field-error').removeClass('is-visible').text('');
             $form.find('input, textarea').removeClass('has-error');
             $feedback.removeClass('is-success is-error').text('');
 
-            $submit.prop('disabled', true).text($submit.data('submitting') || 'Submitting…');
+            showLoader();
 
             $.ajax({
                 url: $form.attr('action'),
@@ -131,26 +145,32 @@
                 }
             })
             .done(function (res) {
-                $feedback.addClass('is-success').text(res.message || 'Thank you!');
                 $form[0].reset();
+                // Show success card, hide form
+                $('#success-msg-text').text(res.message || 'Thank you!');
+                $form.hide();
+                $success.show();
             })
             .fail(function (xhr) {
                 if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
-                    var errs = xhr.responseJSON.errors;
-                    $.each(errs, function (field, messages) {
+                    $.each(xhr.responseJSON.errors, function (field, messages) {
                         var $input = $form.find('[name="' + field + '"]');
                         $input.addClass('has-error');
-                        $input.siblings('.field-error')
-                            .text(messages[0])
-                            .addClass('is-visible');
+                        $input.siblings('.field-error').text(messages[0]).addClass('is-visible');
                     });
                 } else {
-                    $feedback.addClass('is-error').text($form.data('error') || 'Something went wrong.');
+                    $feedback.addClass('is-error')
+                             .text($form.data('error') || 'Something went wrong. Please call us.');
                 }
             })
-            .always(function () {
-                $submit.prop('disabled', false).text(originalBtnText);
-            });
+            .always(hideLoader);
+        });
+
+        // "Submit another" resets and shows form again
+        $('#contact-again').on('click', function () {
+            $success.hide();
+            $form.show();
+            $feedback.removeClass('is-success is-error').text('');
         });
 
 

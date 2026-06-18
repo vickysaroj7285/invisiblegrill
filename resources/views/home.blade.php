@@ -24,16 +24,17 @@
     <meta property="og:title" content="{{ __('site.metaTitle') }}">
     <meta property="og:description" content="{{ __('site.metaDescription') }}">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('images/orignleimage.png') }}">
+    <meta property="og:image" content="{{ asset('images/og-preview.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:locale" content="{{ app()->getLocale() === 'hi' ? 'hi_IN' : 'en_IN' }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ __('site.metaTitle') }}">
     <meta name="twitter:description" content="{{ __('site.metaDescription') }}">
-    <meta name="twitter:image" content="{{ asset('images/orignleimage.png') }}">
+    <meta name="twitter:image" content="{{ asset('images/og-preview.png') }}">
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
@@ -705,13 +706,37 @@
 
                         <button id="contact-submit"
                                 type="submit"
-                                data-submitting="{{ __('site.contactSubmitting') }}"
-                                class="md:col-span-2 rounded-xl bg-[#2e3438] text-white font-medium py-3 hover:bg-[#1c1c1a] transition disabled:opacity-60 disabled:cursor-not-allowed">
-                            {{ __('site.contactBtn') }}
+                                class="md:col-span-2 rounded-xl bg-[#2e3438] text-white font-medium py-3 px-6
+                                       hover:bg-[#1c1c1a] transition disabled:opacity-60 disabled:cursor-not-allowed
+                                       flex items-center justify-center gap-2">
+                            <svg id="btn-loader" style="display:none;animation:ig-spin 1s linear infinite"
+                                 class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+                                <circle style="opacity:.25" cx="12" cy="12" r="10"
+                                        stroke="currentColor" stroke-width="4"></circle>
+                                <path style="opacity:.75" fill="currentColor"
+                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                            </svg>
+                            <span id="btn-label">{{ __('site.contactBtn') }}</span>
                         </button>
 
                         <div id="form-feedback" class="form-feedback md:col-span-2" role="status" aria-live="polite"></div>
                     </form>
+
+                    {{-- Success state (shown after successful submit) --}}
+                    <div id="contact-success" style="display:none" class="mt-10 py-8 text-center">
+                        <div class="inline-flex w-16 h-16 rounded-2xl items-center justify-center mb-5"
+                             style="background:#ecfdf3;border:1px solid #abefc6">
+                            <svg class="w-8 h-8" fill="none" stroke="#027a48" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <p id="success-msg-text" class="text-xl font-semibold text-[#1c1c1a]"></p>
+                        <p class="text-[#1c1c1a]/50 text-sm mt-2">{{ __('site.contactSuccessHint') }}</p>
+                        <button id="contact-again" type="button"
+                                class="mt-6 text-sm text-[#1c1c1a]/40 hover:text-[#1c1c1a] underline underline-offset-2 transition">
+                            {{ __('site.contactAnother') }}
+                        </button>
+                    </div>
 
                     {{-- Contact info --}}
                     <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-[#1c1c1a]/70">

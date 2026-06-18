@@ -8,6 +8,12 @@
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Spinner for submit button */
+@keyframes ig-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
 .animate-fade-in {
     animation: fadeIn 700ms ease-out both;
 }
