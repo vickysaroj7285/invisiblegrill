@@ -24,17 +24,17 @@
     <meta property="og:title" content="{{ __('site.metaTitle') }}">
     <meta property="og:description" content="{{ __('site.metaDescription') }}">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('images/og-social.png') }}">
+    <meta property="og:image" content="{{ asset('images/og-share.jpg') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:locale" content="{{ app()->getLocale() === 'hi' ? 'hi_IN' : 'en_IN' }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ __('site.metaTitle') }}">
     <meta name="twitter:description" content="{{ __('site.metaDescription') }}">
-    <meta name="twitter:image" content="{{ asset('images/og-social.png') }}">
+    <meta name="twitter:image" content="{{ asset('images/og-share.jpg') }}">
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
