@@ -93,6 +93,354 @@
         }
     }
     </script>
+
+    {{-- ============ SCHEMA: BreadcrumbList ============ --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ url('/') }}"
+        }]
+    }
+    </script>
+
+    {{-- ============ SCHEMA: FAQPage ============ --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@@type": "Question",
+                "name": "Is invisible grill safe for children and pets?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. Our invisible grills withstand 250 kg of force and are tested for accidental impact and climbing — fully child and pet safe."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Will the invisible grill block my view?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "No. 1.5 mm SS304/316 cables are nearly invisible and blend into any window or balcony railing without obstructing your view."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "How much maintenance does an invisible grill require?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Zero maintenance. Our grills are rust-proof, UV-resistant and require no painting for 10+ years."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "What finish colours are available for invisible grills?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "We offer anodised aluminium tracks in 6 colours to match your interior decor."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "How long does invisible grill installation take?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Most installations are completed in under 4 hours. We offer both non-drilling and drilling installation options."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Can invisible grills withstand monsoon and cyclone conditions?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. Our grills are cyclone and monsoon tested and perform reliably in coastal humidity."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "How long does it take from enquiry to installation?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Just 72 hours — free site visit, custom quote, precision manufacturing, and clean dust-free installation."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "What warranty is provided on invisible grills?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "All installations come with a 10-year warranty. Cables and tracks are rust-proof and UV-resistant for long-lasting performance."
+                }
+            }
+        ]
+    }
+    </script>
+
+    {{-- ============ SCHEMA: VideoObject ============ --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "ItemList",
+        "name": "Installation Videos — SK Bird Net & Service Surat",
+        "url": "{{ url('/') }}#videos",
+        "itemListElement": [
+            {
+                "@@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@@type": "VideoObject",
+                    "name": "Balcony Invisible Grill Installation",
+                    "description": "Our technician installs a floor-to-ceiling SS304 invisible grill on a high-rise balcony in Surat. Each cable is individually tensioned and anchored into the railing with precision.",
+                    "thumbnailUrl": "{{ asset('video-image/1.jpeg') }}",
+                    "contentUrl": "{{ asset('videos/1.mp4') }}",
+                    "uploadDate": "2026-01-01T00:00:00+05:30",
+                    "publisher": {
+                        "@@type": "Organization",
+                        "name": "SK Bird Net & Service Surat",
+                        "logo": { "@@type": "ImageObject", "url": "{{ asset('images/orignleimage.png') }}" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@@type": "VideoObject",
+                    "name": "Apartment Balcony Bird Net",
+                    "description": "Complete bird net installation on a high-rise apartment balcony in Surat. UV-treated nylon mesh covers the full opening keeping pigeons and sparrows permanently out.",
+                    "thumbnailUrl": "{{ asset('video-image/2.jpeg') }}",
+                    "contentUrl": "{{ asset('videos/2.mp4') }}",
+                    "uploadDate": "2026-01-01T00:00:00+05:30",
+                    "publisher": {
+                        "@@type": "Organization",
+                        "name": "SK Bird Net & Service Surat",
+                        "logo": { "@@type": "ImageObject", "url": "{{ asset('images/orignleimage.png') }}" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@@type": "VideoObject",
+                    "name": "High-Rise Invisible Grill — City View",
+                    "description": "A finished invisible grill installation on a high-rise flat in Surat. Cable spacing meets all safety standards while leaving the panoramic view almost entirely unobstructed.",
+                    "thumbnailUrl": "{{ asset('video-image/3.jpeg') }}",
+                    "contentUrl": "{{ asset('videos/3.mp4') }}",
+                    "uploadDate": "2026-01-01T00:00:00+05:30",
+                    "publisher": {
+                        "@@type": "Organization",
+                        "name": "SK Bird Net & Service Surat",
+                        "logo": { "@@type": "ImageObject", "url": "{{ asset('images/orignleimage.png') }}" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@@type": "VideoObject",
+                    "name": "Main Door Mosquito Net — Bungalow",
+                    "description": "Custom mosquito and fly net installed on the main entrance door of a bungalow in Surat. Fine mesh blocks mosquitoes and flies while letting cool evening air flow freely.",
+                    "thumbnailUrl": "{{ asset('video-image/4.jpeg') }}",
+                    "contentUrl": "{{ asset('videos/4.mp4') }}",
+                    "uploadDate": "2026-01-01T00:00:00+05:30",
+                    "publisher": {
+                        "@@type": "Organization",
+                        "name": "SK Bird Net & Service Surat",
+                        "logo": { "@@type": "ImageObject", "url": "{{ asset('images/orignleimage.png') }}" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 5,
+                "item": {
+                    "@@type": "VideoObject",
+                    "name": "Full Building Bird Net — Society Project",
+                    "description": "A complete bird net installation covering every floor of a multi-storey residential complex in Surat. Group pricing available for housing societies and RWAs.",
+                    "thumbnailUrl": "{{ asset('video-image/5.jpeg') }}",
+                    "contentUrl": "{{ asset('videos/5.mp4') }}",
+                    "uploadDate": "2026-01-01T00:00:00+05:30",
+                    "publisher": {
+                        "@@type": "Organization",
+                        "name": "SK Bird Net & Service Surat",
+                        "logo": { "@@type": "ImageObject", "url": "{{ asset('images/orignleimage.png') }}" }
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+
+    {{-- ============ SCHEMA: Product ItemList ============ --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "ItemList",
+        "name": "Invisible Grill & Safety Net Products — SK Bird Net Surat",
+        "url": "{{ url('/') }}#products",
+        "itemListElement": [
+            {
+                "@@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Balcony Invisible Grill",
+                    "description": "Floor-to-ceiling invisible cable grill for high-rise apartments and villas. Child & pet safe with 250 kg tensile strength.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Window Invisible Grill",
+                    "description": "Virtually invisible protection for bedrooms, kitchens and bathrooms. Lets in light and air, keeps pigeons out permanently.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Staircase Cable Railings",
+                    "description": "Sleek cable railings for indoor stairwells and mezzanines. Anodised aluminium tracks available in 6 finish colours.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Duct Area Bird Protection",
+                    "description": "Sealed invisible mesh for AC ducts, ventilation shafts and service areas. Keeps birds and rodents out permanently.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 5,
+                "item": {
+                    "@@type": "Product",
+                    "name": "French Window Invisible Grill",
+                    "description": "Full-height cable protection for French windows and large glass doors. Maintains panoramic views with zero visual bulk.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 6,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Terrace Cable Railings",
+                    "description": "Monsoon and cyclone-tested cable railings for open terraces and rooftops. UV-resistant SS316 marine grade steel.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 7,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Commercial Invisible Grills",
+                    "description": "High-traffic invisible grills for offices, retail showrooms and corporate campuses. Bulk pricing available.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            },
+            {
+                "@@type": "ListItem",
+                "position": 8,
+                "item": {
+                    "@@type": "Product",
+                    "name": "Villa & Bungalow Safety Grill",
+                    "description": "Perimeter safety and decorative cable fencing for independent houses and luxury villas. Fully custom-designed.",
+                    "brand": { "@@type": "Brand", "name": "SK Bird Net & Service" },
+                    "offers": {
+                        "@@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{{ url('/') }}#contact",
+                        "priceCurrency": "INR",
+                        "seller": { "@@type": "Organization", "name": "SK Bird Net & Service Surat" }
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+
+    {{-- ============ SCHEMA: ImageObject ============ --}}
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "ImageObject",
+        "contentUrl": "{{ asset('images/og-share.jpg') }}",
+        "name": "SK Bird Net & Service Surat — Invisible Grill & Safety Net Installation",
+        "description": "Premium invisible safety grills and bird nets for balconies, windows and staircases in Surat.",
+        "width": 1200,
+        "height": 630,
+        "encodingFormat": "image/jpeg",
+        "url": "{{ url('/') }}"
+    }
+    </script>
 </head>
 <body class="min-h-screen bg-[#f4f3ef] text-[#1c1c1a] antialiased">
 
